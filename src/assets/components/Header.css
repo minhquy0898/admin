@@ -1,0 +1,125 @@
+.container_header {
+    left: 0;
+    right: 0;
+    z-index: 6;
+    display: flex;
+    padding: 0;
+    position: fixed;
+    background: #fff;
+    align-items: center;
+    height: 55px;
+    justify-content: space-between;
+}
+
+.header_logo {
+    grid-gap: 5px;
+    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn_menu {
+    height: 55px;
+    width: 55px;
+    border: none;
+    border-radius: 0px;
+    background-color: #fff;
+    grid-gap: 5px;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.btn_menu:hover {
+    background-color: #e1e3e6;
+}
+
+.link_logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.link_logo img {
+    height: 35px;
+    width: auto;
+}
+
+.header_nav {
+    grid-gap: 5px;
+    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    flex-grow: 1;
+}
+
+.btn_clear {
+    margin-left: 50px;
+    color: #000;
+    font-weight: 400;
+    height: 38px;
+    line-height: 40px;
+    border: 1px solid #bbb;
+    background: linear-gradient(180deg, #f7f8fa, #e7e9ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_clear:focus {
+    outline: none;
+}
+
+.nav_info {
+    position: relative;
+    grid-gap: 5px;
+    gap: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nav_message button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.nav_message button:hover {
+    background-color: #e1e3e6;
+}
+
+.nav_message button:focus {
+    outline: none;
+}
+
+.nav_right_menu {
+    display: flex;
+}
+
+.nav_right_menu button {
+    height: 42px;
+    background-color: #fff;
+    display: flex;
+    grid-gap: 5px;
+    gap: 5px;
+    align-items: center;
+    border: none;
+    padding: 0 10px;
+}
+.nav_right_menu button:hover {
+    background-color: #e1e3e6;
+}
+
+.nav_right_menu button:focus {
+    outline: none;
+}
+
+.icon {
+    margin-right: 6px;
+    margin-top: 2px;
+}

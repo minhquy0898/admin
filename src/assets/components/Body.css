@@ -1,0 +1,111 @@
+.body_content {
+    width: 97%;
+    margin-left: 250px;
+    padding-left: 20px;
+    background: #f4f6f9;
+    position: relative;
+    padding: 75px 36px 4px 22px;
+    min-height: 100vh;
+    height: 100vh;
+}
+
+.content_desc {
+    position: relative;
+    padding-right: 50px;
+    padding: 12.5px 15px;
+    border-radius: 5px;
+    background: #cce5ff;
+    margin-bottom: 20px;
+}
+
+.btn_close {
+    background: none;
+}
+
+.content_orderBy {
+    display: flex;
+    justify-content: space-around;
+}
+
+.oderBy_search {
+    display: flex;
+}
+
+.search_input {
+    position: relative;
+    width: 550px;
+}
+
+.search_input input {
+    height: 48px;
+    width: 100%;
+    border-radius: 50px;
+    border: 1px solid #717070;
+}
+
+.search_input ::placeholder {
+    padding: 0px 0px 0px 24px;
+    color: #c6c9cd;
+}
+
+.btn_primary {
+    position: absolute;
+    background-color: #4679f1;
+    right: 0;
+    height: 48px;
+    border-bottom-right-radius: 50px;
+    border-top-right-radius: 50px;
+    color: #fff;
+}
+
+.link_orderBy {
+    margin-left: 50px;
+    width: 167px;
+    height: 45px;
+    background-color: #4679f1;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.orderBy_list {
+    display: flex;
+    list-style: none;
+}
+
+.orderBy_list p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666666;
+    margin-right: 60px;
+    font-weight: 500;
+}
+
+.orderBy_item {
+    display: flex;
+}
+
+.custom_dropdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 32px;
+    background: linear-gradient(180deg, #f7f8fa, #e7e9ec);
+    border: 1px solid #bbb;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    cursor: pointer;
+}
+.custom_dropdown:last-child {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+.icon_content {
+    margin-left: 6px;
+}
