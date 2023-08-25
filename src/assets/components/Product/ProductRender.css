@@ -1,0 +1,69 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.body_content1 {
+    width: 97%;
+    margin-left: 250px;
+    padding-left: 20px;
+    background: #f4f6f9;
+    position: relative;
+    padding: 15px 36px 4px 22px;
+}
+
+.headerTable {
+    background-color: #F2F2F2;
+}
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.productImg {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+/* Add margins to specific columns */
+td:nth-child(2) {
+    margin-left: 20px;
+}
+
+td:nth-child(3) {
+    margin-left: 40px;
+}
+
+.productImg {
+    width: 100px;
+    height: 100px;
+}
+
+.btn1 {
+    color: #4285F4;
+    background-color: #E8F0FE;
+    padding: 10px 30px;
+    border-radius: 10px;
+}
+
+.btn1:hover {
+    border: 1px solid blue;
+}
+
+.btn2 {
+    color: #A12321;
+    background-color: #F7D7DB;
+    margin-top: 40px;
+}

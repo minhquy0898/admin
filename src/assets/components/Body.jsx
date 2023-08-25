@@ -1,5 +1,7 @@
 import { AiOutlineCloseCircle, AiOutlineDown } from 'react-icons/ai'
 import './Body.css'
+import ProductRender from './Product/ProductRender'
+import { NavLink } from 'react-router-dom'
 const Body = () => {
     return (
         <div className="body_content">
@@ -35,12 +37,13 @@ const Body = () => {
                             <input type="text" placeholder='Search here' />
                             <button className='btn_primary'>Search</button>
                         </form>
-                        <a href="/" className='link_orderBy'>
-                            <span>Add Category</span>
-                        </a>
+                        <NavLink to={'/Add'} className='link_orderBy'>
+                            Add Category
+                        </NavLink>
                     </div>
                 </div>
             </div>
+            <ProductRender></ProductRender>
         </div>
     )
 }

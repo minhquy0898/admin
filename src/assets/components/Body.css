@@ -5,8 +5,6 @@
     background: #f4f6f9;
     position: relative;
     padding: 75px 36px 4px 22px;
-    min-height: 100vh;
-    height: 100vh;
 }
 
 .content_desc {
@@ -99,6 +97,7 @@
     border-bottom-left-radius: 50px;
     cursor: pointer;
 }
+
 .custom_dropdown:last-child {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;

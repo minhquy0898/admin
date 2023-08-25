@@ -1,0 +1,26 @@
+.body_content2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    width: 500px;
+}
+
+.Container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.loginInput {
+    width: 350px;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+}
