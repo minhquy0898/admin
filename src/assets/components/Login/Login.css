@@ -1,20 +1,31 @@
 .body_content2 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    margin-top: 50px;
     width: 500px;
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 500px;
+    margin-top: 250px;
 }
 
 .Container {
+    background: #E55D87;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5FC3E4, #E55D87);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5FC3E4, #E55D87);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 2000px;
     height: 100vh;
     display: flex;
     justify-content: center;
+
 }
 
 .loginInput {
-    width: 350px;
+    width: 300px;
     height: 30px;
     border-radius: 5px;
     margin-top: 15px;
@@ -23,4 +34,8 @@
 .formLogin {
     display: flex;
     flex-direction: column;
+}
+
+.btnSignIn {
+    margin-bottom: 15px;
 }

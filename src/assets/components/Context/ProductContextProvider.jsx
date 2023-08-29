@@ -1,16 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { createContext, useState } from 'react'
 export const ProductContext = createContext();
 function ProductContextProvider({ children }) {
     const [filterProduct, setFilterProduct] = useState([])
     const [product, setProduct] = useState([])
-    const handleChangeInput = (event) => {
-        const { name, value } = event.target
-        setEditProduct(prevState => ({
-            ...prevState,
-            [name]: value
-        }))
-    };
     const [editProduct, setEditProduct] = useState({
         img: '',
         name: '',
@@ -24,12 +18,13 @@ function ProductContextProvider({ children }) {
             product,
             setProduct,
             editProduct,
-            setEditProduct,
-            handleChangeInput
+            setEditProduct
         }}>
             {children}
         </ProductContext.Provider>
     )
 }
-
+ProductContextProvider.propTypes = {
+    children: PropTypes.node
+}
 export default ProductContextProvider
