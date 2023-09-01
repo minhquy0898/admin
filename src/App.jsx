@@ -1,7 +1,6 @@
 import './App.css'
 import { Route, BrowserRouter, Routes } from 'react-router-dom'
 import Header from './assets/components/Header'
-// import Content from './assets/components/Content'
 import ProductContextProvider from './assets/components/Context/ProductContextProvider'
 import Login from './assets/components/Login/Login'
 import Sidebar from './assets/components/Sidebar'
@@ -15,8 +14,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             {/* Route for the login page */}
-            <Route path="/login" element={<Login />} />
-
+            <Route path="/" element={<Login />} />
             {/* All other routes */}
             <Route
               path="/*"

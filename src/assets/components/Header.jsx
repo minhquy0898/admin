@@ -1,6 +1,12 @@
 import './Header.css'
+import Cookies from 'js-cookie'
 import { AiOutlineMenu, AiOutlineDown, AiOutlineMail, AiOutlineUser, AiOutlineLogout } from 'react-icons/ai'
 const Header = () => {
+    const HandleClickLogOut = () => {
+        Cookies.remove("jwt")
+        console.log("xóa");
+        window.location.href = '/'
+    }
     return (
         <div className="container_header">
             <div className="header_logo">
@@ -29,11 +35,11 @@ const Header = () => {
                     </div>
                     <div className="nav_right_menu">
                         <button><AiOutlineUser className='icon' /> Profile</button>
-                        <button><AiOutlineLogout className='icon' /> Logout</button>
+                        <button onClick={HandleClickLogOut}><AiOutlineLogout className='icon' /> Logout</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './Login.css'
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
+import Cookies from 'js-cookie';
+
 function Login() {
     const [account, setAccount] = useState({
         id: "",
@@ -66,8 +68,10 @@ function Login() {
                 setErr("Wrong Password")
             } else {
                 setErr("login success")
+                Cookies.set('jwt', CheckEmail.email, { expires: 31 })
                 window.location.href = '/product'
             }
+
         }
     }
     return (
