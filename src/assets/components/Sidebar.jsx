@@ -7,6 +7,7 @@ import { BiCategory } from 'react-icons/bi'
 import { MdOutlineCollections } from 'react-icons/md'
 import { TbReceiptTax } from 'react-icons/tb'
 import './Sidebar.css'
+import { NavLink } from 'react-router-dom'
 const Sidebar = () => {
     return (
         <div className='content_sidebar'>
@@ -18,12 +19,12 @@ const Sidebar = () => {
 
                 </li>
                 <li className='list_item'>
-                    <a href="/"> <FiInbox />
+                    <NavLink to={"/product"}> <FiInbox />
                         <span className='grow'>
                             <span>Product</span>
                             <AiOutlineDown />
                         </span>
-                    </a>
+                    </NavLink>
                     <ul className='list_item_child'>
                         <li className='child_item'>
                             <a href="/">
@@ -66,12 +67,12 @@ const Sidebar = () => {
                     </a>
                 </li>
                 <li className='list_item'>
-                    <a href="/">
+                    <NavLink to={"/order"}>
                         <RiHandbagLine />
                         <span className='grow'>
                             <span>Orders</span>
                         </span>
-                    </a>
+                    </NavLink>
                 </li>
             </ul>
         </div>

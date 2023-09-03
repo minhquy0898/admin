@@ -7,6 +7,7 @@ import Sidebar from './assets/components/Sidebar'
 import Body from './assets/components/Body'
 import AddnewProduct from './assets/components/AddNewProduct/AddnewProduct'
 import EditProduct from './assets/components/EditProduct/EditProduct'
+import Management from './assets/components/ManageOrder/Manage'
 function App() {
   return (
     <>
@@ -27,6 +28,7 @@ function App() {
                       <Route path="/product" element={<Body />} />
                       <Route path="/Add" element={<AddnewProduct />} />
                       <Route path="/edit/:productId" element={<EditProduct />} />
+                      <Route path='/order' element={<Management></Management>}></Route>
                     </Routes>
                   </div>
                 </>
