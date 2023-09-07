@@ -10,6 +10,45 @@ function AddnewProduct() {
         price: '',
         discount: ''
     })
+    const [formErrors, setFormErrors] = useState({
+        img: '',
+        name: '',
+        price: '',
+        discount: ''
+    });
+    const validateForm = () => {
+        let errors = {};
+        let isValid = true;
+
+        if (!newProduct.img) {
+            errors.img = 'Hãy nhập đường dẫn ảnh sản phẩm.';
+            isValid = false;
+        }
+
+        if (!newProduct.name) {
+            errors.name = 'Hãy nhập tên sản phẩm.';
+            isValid = false;
+        }
+
+        if (!newProduct.price) {
+            errors.price = 'Hãy nhập giá sản phẩm.';
+            isValid = false;
+        } else if (isNaN(newProduct.price)) {
+            errors.price = 'Giá sản phẩm phải là một số.';
+            isValid = false;
+        }
+
+        if (!newProduct.discount) {
+            errors.discount = 'Hãy nhập phần trăm giảm giá.';
+            isValid = false;
+        } else if (isNaN(newProduct.discount)) {
+            errors.discount = 'Phần trăm giảm giá phải là một số.';
+            isValid = false;
+        }
+
+        setFormErrors(errors);
+        return isValid;
+    };
     const handleChangeInput = (event) => {
         const { name, value } = event.target
         setNewProduct(prevState => ({
@@ -19,22 +58,24 @@ function AddnewProduct() {
     }
     const HandleSubmit = async (event) => {
         event.preventDefault();
-        const newProductId = {
-            ...newProduct,
-            id: uuidv4()
+        if (validateForm()) {
+            const newProductId = {
+                ...newProduct,
+                id: uuidv4()
+            };
+
+            try {
+                await axios.post(`http://localhost:3001/Product`, newProductId, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                window.location.href = '/product';
+            } catch (error) {
+                console.log(error);
+            }
         }
-        try {
-            await axios.post(`http://localhost:3001/Product`, newProductId, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            window.location.href = '/product'
-        }
-        catch (error) {
-            console.log(error);
-        }
-    }
+    };
     return (
         <div className='body_content'>
             <p className="content_desc">
@@ -53,15 +94,23 @@ function AddnewProduct() {
                 <form action="" className='FormInput'>
                     <label>Product Img</label>
                     <input name='img' className='TitleInput' value={newProduct.img} onChange={handleChangeInput} />
+                    {formErrors.img && <span style={{ color: 'red' }} className="error">{formErrors.img}</span>}
+
                     <div className='imgInput'>
                         <img style={{ width: `100%`, height: '100%' }} src={newProduct.img} alt="Ảnh thêm" />
                     </div>
+
                     <label>Product Name</label>
                     <input type="text" name='name' value={newProduct.name} className='TitleInput' onChange={handleChangeInput} />
+                    {formErrors.name && <span style={{ color: 'red' }} className="error">{formErrors.name}</span>}
+
                     <label>Price (VNĐ)</label>
                     <input type="number" name='price' value={newProduct.price} className='TitleInput' onChange={handleChangeInput} />
+                    {formErrors.price && <span style={{ color: 'red' }} className="error">{formErrors.price}</span>}
+
                     <label>Discount (%)</label>
                     <input type="number" name='discount' value={newProduct.discount} className='TitleInput' onChange={handleChangeInput} />
+                    {formErrors.discount && <span style={{ color: 'red' }} className="error">{formErrors.discount}</span>}
                     <button className='btn' onClick={HandleSubmit}>Submit</button>
                 </form>
             </div>
