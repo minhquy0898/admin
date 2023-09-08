@@ -7,71 +7,41 @@ import Cookies from 'js-cookie';
 function Login() {
     const [account, setAccount] = useState({
         id: "",
-        email: "",
+        username: "",
         password: ""
     });
-    const adminAccount = {
-        email: "admin",
-        password: "admin"
-    };
     const [err, setErr] = useState('');
-    const HandleSignAsAdmin = async (event) => {
-        event.preventDefault();
-        setAccount(adminAccount);
-
-    }
     const HandleChangeInput = (event) => {
         const { name, value } = event.target;
         setAccount(prevState => ({
             ...prevState,
             [name]: value
         }))
-    }
-    const HandleRegister = async (event) => {
-        event.preventDefault();
-        const newAccount = {
-            ...account,
-            id: uuidv4()
-        }
-        const response = await axios.get(`http://localhost:3001/Account`)
-        let accountAll = response.data
-        if (accountAll.find(acc => acc.email === newAccount.email)) {
-            setErr('email already used')
-        } else {
-            try {
-                await axios.post(`http://localhost:3001/Account`, newAccount, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                setErr('Success')
-            }
-            catch (error) {
-                console.log(error);
-            }
-        }
-    }
 
+    }
+    console.log(account);
     const HandleSignIn = async (event) => {
         event.preventDefault();
-        const response = await axios.get(`http://localhost:3001/Account`)
-        let accountAll = response.data
+        const response = await axios.get(`http://localhost:3001/Account`);
+        let accountAll = response.data;
         console.log(accountAll);
-        console.log(account.email);
-        const CheckEmail = accountAll.find(acc => acc.email === account.email)
-        console.log(CheckEmail);
+        const CheckEmail = accountAll.find(acc => acc.username === account.username);
+        console.log('check', CheckEmail);
         if (!CheckEmail) {
-            setErr('Cannot find this email')
+            setErr(`The username is not exist`);
         }
         else {
-            if (CheckEmail.password !== account.password) {
-                setErr("Wrong Password")
+            if (CheckEmail.username !== "admin") {
+                setErr("The user is not granted access here");
             } else {
-                setErr("login success")
-                Cookies.set('jwt', CheckEmail.email, { expires: 31 })
-                window.location.href = '/product'
+                if (CheckEmail.password !== account.password) {
+                    setErr("Wrong Password");
+                } else {
+                    setErr("Login success");
+                    Cookies.set('jwt', CheckEmail.email, { expires: 31 });
+                    window.location.href = '/product';
+                }
             }
-
         }
     }
     return (
@@ -79,7 +49,7 @@ function Login() {
             <div className='body_content2'>
                 <h2>Welcome back</h2>
                 <form action="" className='formLogin'>
-                    <input type="text" name='email' className='loginInput' placeholder='Email' value={account.email}
+                    <input type="text" name='username' className='loginInput' placeholder='Username' value={account.username}
                         onChange={HandleChangeInput} />
 
                     <input type="password" name='password' className='loginInput' placeholder='Password' value={account.password}
@@ -90,15 +60,8 @@ function Login() {
                         justifyContent: 'space-between',
                         margin: `15px 0px 15px 0px`
                     }}>
-                        <div>
-                            <input type="checkbox" />
-                            Remember me
-                        </div>
-                        <p>Forgot password</p>
                     </div>
-                    <button className='btnSignIn' onClick={HandleRegister}>Register</button>
                     <button className='btnSignIn' onClick={HandleSignIn}>Sign in</button>
-                    <button className='btnSignIn' onClick={HandleSignAsAdmin}>Login as admin</button>
 
                 </form>
             </div>

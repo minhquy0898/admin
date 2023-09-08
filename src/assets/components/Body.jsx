@@ -38,7 +38,7 @@ const Body = () => {
                             <button className='btn_primary'>Search</button>
                         </form>
                         <NavLink to={'/Add'} className='link_orderBy'>
-                            Add Category
+                            Add Product
                         </NavLink>
                     </div>
                 </div>
