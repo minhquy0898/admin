@@ -11,6 +11,7 @@ function ProductContextProvider({ children }) {
         price: '',
         discount: ''
     });
+
     return (
         <ProductContext.Provider value={{
             filterProduct,

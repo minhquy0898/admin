@@ -6,7 +6,7 @@ import axios from 'axios'
 import { ProductContext } from '../Context/ProductContextProvider';
 function EditProduct() {
     const { productId } = useParams();
-    const { editProduct, setEditProduct, handleChangeInput } = useContext(ProductContext)
+    const { editProduct, setEditProduct } = useContext(ProductContext)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -19,6 +19,13 @@ function EditProduct() {
             console.log(error);
         }
     }
+    const handleChangeInput = (event) => {
+        const { name, value } = event.target;
+        setEditProduct((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+    };
     const fetchData = async () => {
         try {
             const response = await axios.get(`http://localhost:3001/Product/${productId}`);
@@ -46,7 +53,7 @@ function EditProduct() {
                 </p>
                 <div className='editForm'>
                     <h4 className='Title'>
-                        Category Form
+                        Edit Product Form
                     </h4>
                     <hr />
                     <form action="" className='FormInput'>
