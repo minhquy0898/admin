@@ -9,7 +9,8 @@ function ProductContextProvider({ children }) {
         img: '',
         name: '',
         price: '',
-        discount: ''
+        discount: '',
+        priceAfterDisCount: ''
     });
 
     return (

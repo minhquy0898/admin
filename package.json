@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
     "axios": "^1.4.0",
+    "bootstrap": "^5.0.1",
     "buffer": "^6.0.3",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.1",

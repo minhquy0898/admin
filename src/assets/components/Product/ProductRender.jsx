@@ -39,17 +39,20 @@ function ProductRender() {
                         <th>Product name</th>
                         <th>Price</th>
                         <th>Discount</th>
-                        <th></th>
+                        <th>Price After Discount</th>
+                        <th>Edit Product</th>
+                        <th>Delete Product</th>
                     </tr>
                 </thead>
                 <tbody>
                     {filterProduct.map((item) => (
                         <tr key={item.id}>
-                            <td><img src={item.img} alt={item.name} className='productImg' /></td>
-                            <td>{item.name}</td>
-                            <td>{item.price === 'Liên hệ' ? 'Liên hệ' : `${parseInt(item.price).toLocaleString("vi-VN")}VNĐ`}</td>
-                            <td>{item.discount !== 0 ? `${item.discount}%` : ''}</td>
-                            <td><NavLink to={`/edit/${item.id}`} className='btn1'>Edit</NavLink></td>
+                            <td className='item'><img src={item.img} alt={item.name} className='productImg' /></td>
+                            <td className='item'>{item.name}</td>
+                            <td className='item'>{item.price === 'Liên hệ' ? 'Liên hệ' : `${parseInt(item.price).toLocaleString("vi-VN")}VNĐ`}</td>
+                            <td className='item'>{item.discount !== 0 ? `${item.discount}%` : ''}</td>
+                            <td className='item'>{`${parseInt(item.priceAfterDisCount).toLocaleString("vi-VN")}VNĐ`}</td>
+                            <td className='item'><NavLink to={`/edit/${item.id}`} className='btn1'>Edit</NavLink></td>
                             <button onClick={() => { handleDelete(item.id) }} className='btn2'>Delete</button>
                         </tr>
                     ))}

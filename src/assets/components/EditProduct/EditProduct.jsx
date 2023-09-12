@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { NavLink, useParams } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './EditProduct.css'
 import axios from 'axios'
@@ -11,14 +11,20 @@ function EditProduct() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:3001/Product/${productId}`, editProduct);
+            const updatedProduct = {
+                ...editProduct,
+                priceAfterDisCount: editProduct.price * (1 - editProduct.discount / 100),
+            };
+            const response = await axios.put(
+                `http://localhost:3001/Product/${productId}`,
+                updatedProduct
+            );
             window.location.href = '/product';
             console.log('response.data', response.data);
-        }
-        catch (error) {
+        } catch (error) {
             console.log(error);
         }
-    }
+    };
     const handleChangeInput = (event) => {
         const { name, value } = event.target;
         setEditProduct((prevState) => ({
@@ -37,6 +43,7 @@ function EditProduct() {
             console.log(error);
         }
     }
+    let priceAfterDisCount = editProduct.price * (1 - editProduct.discount / 100)
     useEffect(() => {
         fetchData()
     }, [productId]);
@@ -68,6 +75,8 @@ function EditProduct() {
                         <input type="number" name='price' className='TitleInput' value={editProduct.price} onChange={handleChangeInput} />
                         <label>Discount (%)</label>
                         <input type="number" name='discount' className='TitleInput' value={editProduct.discount} onChange={handleChangeInput} />
+                        <label>Price after discount</label>
+                        <input type="number" name='priceAfterDisCount' className='TitleInput' value={priceAfterDisCount} onChange={handleChangeInput} />
                         <button className='btn' onClick={handleSubmit}>Submit</button>
                     </form>
                 </div>

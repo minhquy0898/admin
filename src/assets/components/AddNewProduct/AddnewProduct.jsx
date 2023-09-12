@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import { v4 as uuidv4 } from 'uuid'
 function AddnewProduct() {
@@ -53,9 +53,19 @@ function AddnewProduct() {
         const { name, value } = event.target
         setNewProduct(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: value,
         }))
     }
+    useEffect(() => {
+        // Tính lại giá trị priceAfterDisCount sau khi price hoặc discount thay đổi
+        const price = parseFloat(newProduct.price);
+        const discount = parseFloat(newProduct.discount);
+        const priceAfterDisCount = price * (1 - discount / 100);
+        setNewProduct((prevState) => ({
+            ...prevState,
+            priceAfterDisCount,
+        }));
+    }, [newProduct.price, newProduct.discount]);
     const HandleSubmit = async (event) => {
         event.preventDefault();
         if (validateForm()) {
@@ -76,6 +86,7 @@ function AddnewProduct() {
             }
         }
     };
+    let priceAfterDisCount = newProduct.price * (1 - newProduct.discount / 100)
     return (
         <div className='body_content'>
             <p className="content_desc">
@@ -88,7 +99,7 @@ function AddnewProduct() {
             </p>
             <div className='editForm'>
                 <h4 className='Title'>
-                    Category Form
+                    Add Product Form
                 </h4>
                 <hr />
                 <form action="" className='FormInput'>
@@ -111,6 +122,7 @@ function AddnewProduct() {
                     <label>Discount (%)</label>
                     <input type="number" name='discount' value={newProduct.discount} className='TitleInput' onChange={handleChangeInput} />
                     {formErrors.discount && <span style={{ color: 'red' }} className="error">{formErrors.discount}</span>}
+                    <input type="number" name='priceAfterDisCount' className='TitleInput' value={priceAfterDisCount} onChange={handleChangeInput} />
                     <button className='btn' onClick={HandleSubmit}>Submit</button>
                 </form>
             </div>

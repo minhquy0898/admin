@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './Login.css'
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid'
 import Cookies from 'js-cookie';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function Login() {
     const [account, setAccount] = useState({
@@ -47,14 +47,14 @@ function Login() {
     return (
         <div className='Container'>
             <div className='body_content2'>
-                <h2>Welcome back</h2>
+                <h2 style={{ color: `#80D8EE`, marginTop: 10 }}>Login Form</h2>
                 <form action="" className='formLogin'>
-                    <input type="text" name='username' className='loginInput' placeholder='Username' value={account.username}
+                    <input type="text" name='username' className="input-border d-block" placeholder='Username' value={account.username}
                         onChange={HandleChangeInput} />
 
-                    <input type="password" name='password' className='loginInput' placeholder='Password' value={account.password}
+                    <input type="password" name='password' className="input-border d-block" placeholder='Password' value={account.password}
                         onChange={HandleChangeInput} />
-                    {err ? <p>{err}</p> : null}
+                    {err ? <p style={{ color: `red` }}>{err}</p> : null}
                     <div style={{
                         display: 'flex',
                         justifyContent: 'space-between',
